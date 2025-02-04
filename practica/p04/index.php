@@ -67,9 +67,56 @@
     echo '$a ahora contiene "PHP server".';
     echo '<br>';
     echo '$b se vuelve referencia de $a, por lo que también almacena "PHP server".';
-
     ?>
 
+    <h2>Ejercicio 3</h2>
+    <p>Muestra el contenido de cada variable inmediatamente después de cada asignación,
+    verificar la evolución del tipo de estas variables (imprime todos los componentes de los
+    arreglo):</p>
+
+    <?php
+    $a = "PHP5";
+    echo "$a";
+    echo '<br>';
+
+    $z[] = &$a;
+    print_r($z);
+    echo '<br>';
+
+    $b = "5a version de PHP";
+    echo "$b";
+    echo '<br>';
+
+    $c = intval($b) *10;
+    echo "$c";
+    echo '<br>';
+
+    $a .= $b;
+    echo "$a";
+    echo '<br>';
+
+    $b = intval($b); // Convierte a número antes de la multiplicación
+    $b *= $c;
+    echo "$b";
+    echo '<br>';
+    
+    $z[0] = "MySQL";  
+    print_r ($z);  
+
+    /* Resultado en PHP TESTER con el mismo código:
+    PHP5
+    Array ( [0] => PHP5 )
+    5a version de PHP
+    50
+    PHP55a version de PHP
+    250
+    Array ( [0] => MySQL )
+    */
+    ?>
+
+    <h2>Ejercicio 4</h2>
+    <p>Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de
+    la matriz $GLOBALS o del modificador global de PHP.</p>
 
 </body>
 </html>
