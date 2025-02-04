@@ -37,36 +37,36 @@
     <p>$b = 'MySQL'; </p>
     <p>$c = &$a; </p>
     <?php
-    $a = "ManejadorSQL";
-    $b = 'MySQL';  
-    $c = &$a; 
+        $a = "ManejadorSQL";
+        $b = 'MySQL';  
+        $c = &$a; 
 
-    echo '<ol>';
-    echo '<li> Ahora muestra el contenido de cada variable: </li>';
-    echo "$a";
-    echo '<br>';
-    echo "$b";
-    echo '<br>';
-    echo "$c";
-    echo '<li> Agrega al código actual las siguientes asignaciones: </li>';
-    echo '$a = “PHP server”; ';
-    echo ' $b = &$a;';
-    
-    $a = "PHP server";
-    $b = &$a;
+        echo '<ol>';
+        echo '<li> Ahora muestra el contenido de cada variable: </li>';
+        echo "$a";
+        echo '<br>';
+        echo "$b";
+        echo '<br>';
+        echo "$c";
+        echo '<li> Agrega al código actual las siguientes asignaciones: </li>';
+        echo '$a = “PHP server”; ';
+        echo ' $b = &$a;';
+        
+        $a = "PHP server";
+        $b = &$a;
 
-    echo '<li> Vuelve a mostrar el contenido </li>';
-    echo "$a";
-    echo '<br>';
-    echo "$b";
+        echo '<li> Vuelve a mostrar el contenido </li>';
+        echo "$a";
+        echo '<br>';
+        echo "$b";
 
-    echo '<li>Describe en y muestra en la página obtenida qué ocurrió en el segundo bloque de asignaciones</li>';
-    echo '</ol>';
+        echo '<li>Describe en y muestra en la página obtenida qué ocurrió en el segundo bloque de asignaciones</li>';
+        echo '</ol>';
 
-    echo '<h4>Respuesta: </h4>';
-    echo '$a ahora contiene "PHP server".';
-    echo '<br>';
-    echo '$b se vuelve referencia de $a, por lo que también almacena "PHP server".';
+        echo '<h4>Respuesta: </h4>';
+        echo '$a ahora contiene "PHP server".';
+        echo '<br>';
+        echo '$b se vuelve referencia de $a, por lo que también almacena "PHP server".';
     ?>
 
     <h2>Ejercicio 3</h2>
@@ -75,48 +75,78 @@
     arreglo):</p>
 
     <?php
-    $a = "PHP5";
-    echo "$a";
-    echo '<br>';
+        $a = "PHP5";
+        echo "$a";
+        echo '<br>';
 
-    $z[] = &$a;
-    print_r($z);
-    echo '<br>';
+        $z[] = &$a;
+        print_r($z);
+        echo '<br>';
 
-    $b = "5a version de PHP";
-    echo "$b";
-    echo '<br>';
+        $b = "5a version de PHP";
+        echo "$b";
+        echo '<br>';
 
-    $c = intval($b) *10;
-    echo "$c";
-    echo '<br>';
+        $c = intval($b) *10;
+        echo "$c";
+        echo '<br>';
 
-    $a .= $b;
-    echo "$a";
-    echo '<br>';
+        $a .= $b;
+        echo "$a";
+        echo '<br>';
 
-    $b = intval($b); // Convierte a número antes de la multiplicación
-    $b *= $c;
-    echo "$b";
-    echo '<br>';
-    
-    $z[0] = "MySQL";  
-    print_r ($z);  
+        $b = intval($b); // Convierte a número antes de la multiplicación
+        $b *= $c;
+        echo "$b";
+        echo '<br>';
+        
+        $z[0] = "MySQL";  
+        print_r ($z);  
 
-    /* Resultado en PHP TESTER con el mismo código:
-    PHP5
-    Array ( [0] => PHP5 )
-    5a version de PHP
-    50
-    PHP55a version de PHP
-    250
-    Array ( [0] => MySQL )
-    */
+        /* Resultado en PHP TESTER con el mismo código:
+        PHP5
+        Array ( [0] => PHP5 )
+        5a version de PHP
+        50
+        PHP55a version de PHP
+        250
+        Array ( [0] => MySQL )
+        */
     ?>
 
     <h2>Ejercicio 4</h2>
     <p>Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de
     la matriz $GLOBALS o del modificador global de PHP.</p>
+    
+    <?php    
+    $a = "PHP5";
+    $z[] = &$a;
+    $b = "5a version de PHP";
+    $c = intval($b) * 10;
+    $a .= $b;
+    $b = intval($b);
+    $b *= $c;
+    $z[0] = "MySQL";
+        function mostrarValores(){
+
+            echo 'Valor de \$a: '. $GLOBALS['a'] . "<br>";
+            echo 'Valor de \$b: ' . $GLOBALS['b'] . "<br>";
+            echo 'Valor de \$c: ' . $GLOBALS['c'] . "<br>";
+    
+            echo 'Contenido de \$z: ';
+            print_r($GLOBALS['z']);
+            echo "<br>";
+        }                
+        // Llamamos a la función para mostrar los valores
+        mostrarValores();
+        /*Resultado en PHP TESTER con el mismo código:
+    Valor de \$a: MySQL
+    Valor de \$b: 250
+    Valor de \$c: 50
+    Contenido de \$z: Array ( [0] => MySQL )
+    */
+    ?>
+    
 
 </body>
 </html>
