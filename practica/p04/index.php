@@ -224,13 +224,29 @@
         bool(true)
         bool(false)
         bool(true) 
-        
+
         Mostramos los valores de $c y $e con un echo:
         false
         false
         */
+        ?>
 
+        <h2>Ejercicio 7</h2>
+        <p>Usando la variable predefinida $_SERVER, determina lo siguiente:<br>
+            a. La versión de Apache y PHP,<br>
+            b. El nombre del sistema operativo (servidor),<br>
+            c. El idioma del navegador (cliente).
+        </p>
 
+        <?php
+
+        echo '<h4>Respuesta:</h4>';
+        echo $_SERVER['SERVER_SOFTWARE'];
+        echo '<br>';
+        echo PHP_OS;
+        echo '<br>';
+        echo $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+        
         ?>
 
 </body>
