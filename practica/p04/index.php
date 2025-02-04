@@ -173,8 +173,65 @@
     $c = (double) $a;
     echo "$c";
     echo '<br>';   
-    
     ?>
+
+    <h2>Ejercicio 6</h2>
+        <p>Dar y comprobar el valor booleano de las variables $a, $b, $c, $d, $e y $f y muéstralas
+        usando la función var_dump(<datos>):<br>
+        Después investiga una función de PHP que permita transformar el valor booleano de $c y $e
+        en uno que se pueda mostrar con un echo:
+        <br>
+        $a = “0”; <br>
+        $b = “TRUE”;<br>
+        $c = FALSE;<br>
+        $d = ($a OR $b);<br>
+        $e = ($a AND $c);<br>
+        $f = ($a XOR $b);
+        </p>
+
+        <?php
+        $a = "0"; 
+        $b = "TRUE";
+        $c = FALSE;
+        $d = ($a OR $b);
+        $e = ($a AND $c);
+        $f = ($a XOR $b);
+
+        echo '<h4>Respuesta:</h4>';
+        var_dump($a);
+        echo '<br>';
+        var_dump($b);
+        echo '<br>';
+        var_dump($c);
+        echo '<br>';
+        var_dump($d);
+        echo '<br>';
+        var_dump($e);
+        echo '<br>';
+        var_dump($f);
+
+        echo '<br>';
+
+        echo '<h5>Mostramos los valores de $c y $e con un echo: </h5>';
+        echo var_export($c, true);
+        echo '<br>';
+        echo var_export($e, true);
+        /* Resultado de PHP TESTER:
+        Respuesta:
+        string(1) "0"
+        string(4) "TRUE"
+        bool(false)
+        bool(true)
+        bool(false)
+        bool(true) 
+        
+        Mostramos los valores de $c y $e con un echo:
+        false
+        false
+        */
+
+
+        ?>
 
 </body>
 </html>
