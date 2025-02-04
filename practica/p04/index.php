@@ -75,6 +75,8 @@
     arreglo):</p>
 
     <?php
+    
+    echo '<h4>Respuesta:</h4>';
         $a = "PHP5";
         echo "$a";
         echo '<br>';
@@ -138,15 +140,41 @@
             echo "<br>";
         }                
         // Llamamos a la función para mostrar los valores
+        
+        echo '<h4>Respuesta:</h4>';
         mostrarValores();
+        
         /*Resultado en PHP TESTER con el mismo código:
-    Valor de \$a: MySQL
-    Valor de \$b: 250
-    Valor de \$c: 50
-    Contenido de \$z: Array ( [0] => MySQL )
-    */
+        Valor de \$a: MySQL
+        Valor de \$b: 250
+        Valor de \$c: 50
+        Contenido de \$z: Array ( [0] => MySQL )
+        */
     ?>
+    <h2>Ejercicio 5</h2>
+    <p>Dar el valor de las variables $a, $b, $c al final del siguiente script:<br>
+    $a = “7 personas”;<br>
+    $b = (integer) $a;<br>
+    $a = “9E3”;<br>
+    $c = (double) $a;</p>
+
+    <?php
     
+    echo '<h4>Respuesta:</h4>';
+    $a = "7 personas";
+    echo "$a";
+    echo '<br>';
+    $b = (integer) $a;
+    echo "$b";
+    echo '<br>';
+    $a = "9E3";
+    echo "$a";
+    echo '<br>';
+    $c = (double) $a;
+    echo "$c";
+    echo '<br>';   
+    
+    ?>
 
 </body>
 </html>
