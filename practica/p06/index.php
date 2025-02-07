@@ -60,8 +60,39 @@
             ale_do_while($_GET['numero3']);
         }
 
-    ?>
 
+    echo '<h2>Ejercicio 4</h2>';
+    echo '<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla ASCII</title>
+    <style>
+        table {
+            width: 30%;
+            border-collapse: collapse;
+            margin: 20px;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tabla de caracteres ASCII</h2>';
+
+// Llamar a la función para mostrar la tabla
+echo generarTablaASCII();
+
+echo '</body>';
+    ?>
+    
 
     <h2>Ejemplo de POST</h2>
     <form action="http://localhost/tecweb/practicas/p04/index.php" method="post">
