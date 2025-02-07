@@ -120,8 +120,6 @@ echo '</body>';
     </form>
 
     <?php
-       
-
         // Verificar si se enviaron los datos por POST
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["edad"]) && isset($_POST["sexo"])) {
             $edad = intval($_POST["edad"]);
@@ -142,6 +140,76 @@ echo '</body>';
     <p class="mensaje"><?php echo $mensaje; ?></p>
 </body>
 </html>
+
+        <h2>Ejercicio 6</h2>
+    <p>Crea en código duro un arreglo asociativo que sirva para registrar el parque vehicular de
+    una ciudad.</p>
+
+    <?php
+$matriculaConsultada = isset($_POST['matricula']) ? strtoupper($_POST['matricula']) : null;
+$vehiculo = $matriculaConsultada ? obtenerVehiculos($matriculaConsultada) : null;
+$vehiculos = !$matriculaConsultada ? obtenerVehiculos() : null;
+
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Parque Vehicular</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .mensaje {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Consulta del Parque Vehicular</h1>
+
+    <!-- Formulario de consulta por matrícula -->
+    <h3>Consultar por matrícula</h3>
+    <form method="POST" action="index.php">
+        <label for="matricula">Matrícula del auto:</label>
+        <input type="text" name="matricula" required pattern="[A-Z]{3}[0-9]{4}" maxlength="7">
+        <button type="submit">Consultar</button>
+    </form>
+
+    <!-- Mostrar los resultados -->
+    <?php if ($vehiculo): ?>
+        <h3>Información del Vehículo</h3>
+        <pre><?php print_r($vehiculo); ?></pre>
+    <?php elseif ($matriculaConsultada): ?>
+        <p class="mensaje">Lo siento, la matrícula no existe o no está registrada.</p>
+    <?php endif; ?>
+
+    <!-- Formulario para mostrar todos los vehículos -->
+    <h3>Consultar Todos los Vehículos Registrados</h3>
+    <form method="POST" action="index.php">
+        <button type="submit">Mostrar Todos</button>
+    </form>
+
+    <!-- Mostrar todos los vehículos registrados -->
+    <?php if ($vehiculos): ?>
+        <h3>Vehículos Registrados</h3>
+        <pre><?php print_r($vehiculos); ?></pre>
+    <?php endif; ?>
+
+</body>
+</html>
+
+
 
     <h2>Ejemplo de POST</h2>
     <form action="http://localhost/tecweb/practicas/p04/index.php" method="post">
