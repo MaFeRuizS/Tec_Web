@@ -100,4 +100,76 @@ function generarTablaASCII() {
     return $tabla;
 }
 
+ function validar_Edad_Sexo($edad, $sexo) {
+    if ($sexo === "femenino" && $edad >= 18 && $edad <= 35) {
+        return "Bienvenida, usted está en el rango de edad permitido.";
+    } else {
+        return "Lo sentimos, no cumple con la edad necesaria o el sexo seleccionado.";
+    }
+}
+
+function obtenerVehiculos($matricula = null) {
+    // Arreglo asociativo con los datos del parque vehicular
+    $vehiculos = [
+        "UBN6338" => [
+            "Auto" => [
+                "marca" => "HONDA",
+                "modelo" => 2020,
+                "tipo" => "camioneta"
+            ],
+            "Propietario" => [
+                "nombre" => "Alfonzo Esparza",
+                "ciudad" => "Puebla, Pue.",
+                "direccion" => "C.U., Jardines de San Manuel"
+            ]
+        ],
+        "UBN6339" => [
+            "Auto" => [
+                "marca" => "MAZDA",
+                "modelo" => 2019,
+                "tipo" => "sedan"
+            ],
+            "Propietario" => [
+                "nombre" => "Ma. del Consuelo Molina",
+                "ciudad" => "Puebla, Pue.",
+                "direccion" => "97 oriente"
+            ]
+        ],
+        // Más registros de autos aquí...
+        "XRT5678" => [
+            "Auto" => [
+                "marca" => "TOYOTA",
+                "modelo" => 2021,
+                "tipo" => "camioneta"
+            ],
+            "Propietario" => [
+                "nombre" => "Carlos Martínez",
+                "ciudad" => "Atlixco, Pue.",
+                "direccion" => "Avenida 5, Zona Centro"
+            ]
+        ],
+        "BRL2345" => [
+            "Auto" => [
+                "marca" => "FORD",
+                "modelo" => 2022,
+                "tipo" => "hatchback"
+            ],
+            "Propietario" => [
+                "nombre" => "Laura Gómez",
+                "ciudad" => "Cholula, Pue.",
+                "direccion" => "Boulevard 2, San Andrés"
+            ]
+        ]
+        // Agrega más autos según lo necesites
+    ];
+
+    // Si se pasa una matrícula específica, se devuelve solo ese auto
+    if ($matricula && isset($vehiculos[$matricula])) {
+        return $vehiculos[$matricula];
+    }
+
+    // Si no se pasa matrícula, se devuelve todos los autos registrados
+    return $vehiculos;
+}
+
 ?>
