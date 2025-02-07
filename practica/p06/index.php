@@ -39,7 +39,27 @@
     } else {
         echo "<p style='color:red;'>Error: No se generó la secuencia correctamente.</p>";
     }
-    
+
+    echo '<h2>Ejercicio 3</h2>';
+    echo '<p>Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente,
+    pero que además sea múltiplo de un número dado.<br>
+    • Crear una variante de este script utilizando el ciclo do-while.<br>
+    • El número dado se debe obtener vía GET.</p>';
+
+    if(isset($_GET['numero3']))
+        {
+          echo num_aleatorio($_GET['numero3']);
+        }
+    else {
+        echo "<p style='color:red;'>Error: Debes proporcionar un número válido en la URL (Ejemplo: ?numero3=7)</p>";
+    }
+
+    echo '<h3>Usando Do-While</h3>';
+    if(isset($_GET['numero3']))
+        {
+            ale_do_while($_GET['numero3']);
+        }
+
     ?>
 
 
