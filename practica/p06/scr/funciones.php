@@ -78,5 +78,26 @@ function ale_do_while($num4){
 
 }
 
+function generarTablaASCII() {
+    // Crear el arreglo con índices de 97 a 122 y valores de 'a' a 'z'
+    $arreglo = [];
+    for ($i = 97; $i <= 122; $i++) {
+        $arreglo[$i] = chr($i);
+    }
+
+    // Generar la tabla en XHTML
+    $tabla = '<table>
+                <tr>
+                    <th>Índice (Código ASCII)</th>
+                    <th>Valor (Letra)</th>
+                </tr>';
+    
+    foreach ($arreglo as $key => $value) {
+        $tabla .= "<tr><td>$key</td><td>$value</td></tr>";
+    }
+
+    $tabla .= '</table>';
+    return $tabla;
+}
 
 ?>
