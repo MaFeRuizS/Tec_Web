@@ -1,0 +1,63 @@
+<!DOCTYPE html >
+<html>
+
+  <head>
+    <meta charset="utf-8" >
+    <title>Registro de productos</title>
+    <style type="text/css">
+      ol, ul { 
+      list-style-type: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Registro de Productos Nuevos</h1>
+        <h2>Añade la información necesaria del producto:</h2>
+    <form id="formularioproductos"  action="http://localhost/tec_web/practica/p08/set_producto_v2.php" method="post">
+
+      <fieldset>
+        <legend>Información Descriptiva:</legend>
+
+        <ul>
+          <li><label for="form-name">Nombre del producto:</label> <input type="text" name="name" id="form-name"></li>
+          <li><label for="form-marca">Marca del producto:</label> <input type="text" name="marca" id="form-marca"></li>
+          <li><label for="form-modelo">Modelo del producto:</label> <input type="text" name="modelo" id="form-modelo"></li>
+          <li><label for="form-descp">Ingresa las principales características del producto:</label><br><textarea name="story" rows="4" cols="60" id="form-descp" placeholder="No más de 300 caracteres de longitud"></textarea></li>
+        </ul>
+      </fieldset>
+
+      <fieldset>
+        <legend>Otros detalles.</legend>
+
+        <fieldset>
+          <legend><em>Precio del producto</em>:</legend>
+            <ul>
+                <li><label for="form-precio">Precio al público:</label> <input type="text" name="precio" id="form-precio"></li>            
+            </ul>
+        </fieldset>
+
+        <fieldset>
+          <legend<em>Unidades disponibles</em></legend>
+          <ul>
+            <li><label for="form-unidades">Unidades:</label> <input type="number" name="unidades" id="form-unidades"></li>
+          </ul>
+        </fieldset>
+
+        <fieldset>
+            <legend><em>Imagen del producto</em>:</legend>
+              <ul>
+                  <li><label for="form-imagen">Imagen a cargar:</label> <input type="file" name="img" id="form-imagen"></li>            
+              </ul>
+          </fieldset>
+
+      </fieldset>
+
+      <p>
+        <input type="submit" value="Añadir producto.">
+        <input type="reset">
+      </p>
+
+    </form>
+  </body>
+</html>
