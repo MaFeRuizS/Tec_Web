@@ -21,9 +21,9 @@
 /** SE CREA EL OBJETO DE CONEXION */
 @$link = new mysqli('localhost', 'root', '12345678a', 'marketzone');	
 
-/** comprobar la conexión */
+/** comprobar la conexión */
 if ($link->connect_errno) {
-    die('Falló la conexión: '.$link->connect_error.'<br/>');
+    die('Falló la conexión: '.$link->connect_error.'<br/>');
 }
 
 /** Asignar variables de $_POST */
@@ -34,44 +34,47 @@ $precio = $_POST['precio'];
 $detalles = $_POST['story'];
 $unidades = $_POST['unidades'];
 $imagen   = 'img/'.$_POST['img'];
+$eliminado = 0;
 
-/** Verificar si el producto ya existe */
-$sql_check = "SELECT COUNT(*) FROM productos WHERE nombre = ? AND marca = ? AND modelo = ?";
-$stmt = $link->prepare($sql_check);
-$stmt->bind_param("sss", $nombre, $marca, $modelo);
-$stmt->execute();
-$stmt->bind_result($count);
-$stmt->fetch();
-$stmt->close();
+$sql_check = "SELECT id FROM productos WHERE nombre = ? and marca = ? and modelo = ?";
+            $stm_check = $link->prepare($sql_check); 
+            $stm_check->bind_param("sss", $nombre, $marca, $modelo); 
+            $stm_check->execute(); 
+            $stm_check->store_result(); 
+            if ($stm_check->num_rows > 0) {
+                die("<h1>Error. La base de datos ya contiene un producto con el nombre $nombre de la marca $marca.</h1>");
+            }
+            $stm_check->close();
 
-if ($count > 0) {
-    echo '<p>Error: El producto ya está registrado en la base de datos.</p>';
-} else {
-    $sql = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen) 
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $link->prepare($sql);
-    $stmt->bind_param("sssdsis", $nombre, $marca, $modelo, $precio, $detalles, $unidades, $imagen);
-    
-    if ($stmt->execute()) {
-        echo '<h1>Hemos añadido tu producto</h1>';
-		echo '<h2>Detalles:</h2>';
-		echo '<ul>';
-		echo '<li><string>ID:</strong <em>'.$link->insert_id.'</em></li>';
-		echo '<li><strong>Nombre:</strong> <em>'.htmlspecialchars($nombre).'</em></li>';
-		echo '<li><strong>Marca:</strong> <em>'.htmlspecialchars($marca).'</em></li>';
-		echo '<li><strong>Modelo:</strong> <em>'.htmlspecialchars($modelo).'</em></li>';
-        echo '<li><strong>Precio:</strong> <em>'.htmlspecialchars($precio).'</em></li>';
-        echo '<li><strong>Unidades:</strong> <em>'.htmlspecialchars($unidades).'</em></li>';
-        echo '<li><strong>Detalles:</strong> <em>'.htmlspecialchars($detalles).'</em></li>';
-        echo '<li><strong>Imagen:</strong> <em>'.htmlspecialchars($imagen).'</em></li>';
-		echo '</ul>';
-		echo '<li><string>Eliminamos (0=False, 1=True):</strong <em>'. $link->insert_Eliminado.'</em></li>'; 
-    } else {
-        echo '<h2>Error al insertar el producto.</h2>';
-    }
-    $stmt->close();
-}
+            /** Crear una tabla que no devuelve un conjunto de resultados */
+            //$sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}', 0)";
+            //Utilizando column names 
+            $sql = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen) 
+                  VALUES ('{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
 
-?>
+            if ( $link->query($sql) ) 
+            {
+                echo '<p>Producto insertado con ID: '.$link->insert_id.'</p>';
+				echo '<h1>Hemos añadido tu producto</h1>';
+			echo '<h2>Detalles:</h2>';
+			echo '<ul>';
+			echo '<li><strong>Nombre:</strong> <em>'.htmlspecialchars($nombre).'</em></li>';
+			echo '<li><strong>Marca:</strong> <em>'.htmlspecialchars($marca).'</em></li>';
+			echo '<li><strong>Modelo:</strong> <em>'.htmlspecialchars($modelo).'</em></li>';
+			echo '<li><strong>Precio:</strong> <em>'.htmlspecialchars($precio).'</em></li>';
+			echo '<li><strong>Unidades:</strong> <em>'.htmlspecialchars($unidades).'</em></li>';
+			echo '<li><strong>Detalles:</strong> <em>'.htmlspecialchars($detalles).'</em></li>';
+			echo '<li><strong>Imagen:</strong> <em>'.htmlspecialchars($imagen).'</em></li>';
+			echo '</ul>';
+
+
+            }
+            else
+            {
+                echo '<p>El Producto no pudo ser insertado =(</p>';
+            }
+
+            $link->close();
+        ?>
 	</body>
 </html>
