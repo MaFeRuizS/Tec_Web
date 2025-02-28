@@ -21,7 +21,7 @@
     <h1>Registro de Productos Nuevos</h1>
         <h2>Añade la información necesaria del producto:</h2>
        <!-- action="http://localhost/tec_web/practica/p08/set_producto_v2.php" --> 
-    <form id="formularioproductos" method="post">
+    <form id="formularioproductos"  action="http://localhost/tec_web/practica/p09/set_producto_v2.php"  method="post" enctype="multipart/form-data">
 
       <fieldset>
         <legend>Información Descriptiva:</legend>
@@ -66,14 +66,14 @@
         <fieldset>
             <legend>Imagen del producto:</legend>
               <ul>
-                  <li><label for="form-imagen">Imagen a cargar:</label> <input type="file" name="img" id="form-imagen"></li><div id="error7" class="error-message"></div>         
+                  <li><label for="form-imagen">Imagen a cargar:</label> <input type="file" name="img" id="img"></li><div id="error7" class="error-message"></div>         
               </ul>
           </fieldset>
 
       </fieldset>
 
       <p>
-        <input type="submit" value="Añadir producto." id="enviar">
+        <input type="submit" value="Añadir producto" id="enviar">
         <input type="reset">
       </p>
 
