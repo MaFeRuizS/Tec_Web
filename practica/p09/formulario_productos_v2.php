@@ -15,6 +15,7 @@
         display: none; /* Los mensajes de error no se muestran por defecto */
       }
     </style>
+
   </head>
 
   <body>
@@ -47,8 +48,9 @@
     <h1>Registro de Productos Nuevos</h1>
         <h2>Añade la información necesaria del producto:</h2>
        <!-- action="http://localhost/tec_web/practica/p08/set_producto_v2.php" --> 
-    <form id="formularioproductos" method="post">
-
+       <form id="formularioproductos" action="http://localhost/tec_web/practica/p09/update_productos.php" method="post" enctype="multipart/form-data"> 
+        <input type="hidden" name="id" value="<?= isset($product['id']) ? htmlspecialchars($product['id']) : '' ?>">
+      
       <fieldset>
         <legend>Información Descriptiva:</legend>
 
@@ -100,7 +102,7 @@
       </fieldset>
 
       <p>
-        <input type="submit" value="Añadir producto." id="enviar">
+      <input type="submit" value="Modificar producto" id= "enviar">
         <input type="reset">
       </p>
 
