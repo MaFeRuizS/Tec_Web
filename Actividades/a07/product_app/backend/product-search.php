@@ -1,32 +1,15 @@
 <?php
-    /*include_once __DIR__.'/database.php';
+        use TECWEB\MYAPI\Products as Products;
+    require_once './myapi/Products.php';
 
-    $search = $_GET['search'];
+    $prodObj = new Products('root', '12345678a', 'marketzone'); 
 
     if(!empty($search)){
-        $query = "SELECT * FROM productos Where (id = '{$search}' OR nombre LIKE '%{$search}%' OR marca LIKE '%{$search}%' OR detalles LIKE '%{$search}%') AND eliminado = 0";
-        $result = mysqli_query($conexion, $query);
-        if(!$result){
-            die('Query Error'.mysqli_error($conexion));
-        }
-
-        $json = array();
-        while($row = mysqli_fetch_array($result)){
-            $json[] = array(
-                'name' => $row['nombre'],
-                'description' => $row['detalles'],
-                'id' => $row['id']
-            );
-        }
-        $jsonstring = json_encode($json);
-        echo $jsonstring;}*/
-
-        use TECWEB\MYAPI\Products as Products;
-        require_once __DIR__ . '/myapi/products.php';
+        $prodObj->search($search); 
+    }
+    else{
+        $prodObj->singleByName($search); 
+    }
     
-        $prodObj = new Products('marketzone');
-        $prodObj->search();
-    
-        echo $prodObj->getData();
-    
+    echo json_encode ($prodObj->getData()); 
 ?>
