@@ -8,7 +8,7 @@
     $app = AppFactory::create(); 
     $app->setBasepath("/tec_web/practica/p17"); 
 
-    $app->get('/', function($request, $response, $args) {
+  /*  $app->get('/', function($request, $response, $args) {
 
         $response->getBody()->write("Hola Mundo Slim!!!");
         return $response;  
@@ -29,7 +29,7 @@
         return $response;  
     }); 
 
-    #testjson con get
+   #testjson con get
     $app->get("/testjson1", function($request, $response, $args){
         $data[0]["nombre"]="Valeria";
         $data[0]["apellidos"]="Pestaña Marquez";
@@ -40,7 +40,7 @@
 
         $response->getBody()->write(json_encode($data, JSON_PRETTY_PRINT));
         return $response; 
-    }); 
+    }); */
 
     #testjson con post
     $app->post("/testjson", function($request, $response, $args){
