@@ -76,7 +76,7 @@
       </fieldset>
 
       <fieldset>
-        <legend>Otros detalles.</legend>
+        <legend>Otros detalles:</legend>
 
         <fieldset>
           <legend><em>Precio del producto</em>:</legend>
